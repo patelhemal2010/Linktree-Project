@@ -41,6 +41,24 @@ app.use("/api/links", linkRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
+app.get("/api/health", async (req, res) => {
+  try {
+    const dbCheck = await require("./src/config/db").query("SELECT NOW()");
+    res.json({
+      status: "ok",
+      database: "connected",
+      time: dbCheck.rows[0].now,
+      env: process.env.NODE_ENV
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      database: "failed",
+      error: err.message
+    });
+  }
+});
+
 // Public redirect route (Like Linktree)
 app.get("/l/:id", redirectAndTrack);
 
@@ -63,7 +81,7 @@ app.use((err, req, res, next) => {
   console.error("Global Error:", err);
   res.status(500).json({
     success: false,
-    message: "Internal server error",
+    message: err.message || "Internal server error",
   });
 });
 
