@@ -1,5 +1,10 @@
 {
     "version": 2,
+    "functions": {
+        "backend/server.js": {
+            "runtime": "@vercel/node"
+        }
+    },
     "rewrites": [
         {
             "source": "/api/(.*)",
@@ -15,11 +20,11 @@
         },
         {
             "source": "/assets/(.*)",
-            "destination": "/frontend/dist/assets/$1"
+            "destination": "/dist/assets/$1"
         },
         {
             "source": "/(.*)",
-            "destination": "/frontend/dist/index.html"
+            "destination": "/dist/index.html"
         }
     ]
 }
