@@ -1,26 +1,31 @@
 {
     "version": 2,
-    "outputDirectory": "frontend/dist",
+    "functions": {
+        "backend/server.js": {
+            "runtime": "@vercel/node@18.x",
+            "includeFiles": "backend/src/**"
+        }
+    },
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "backend/server.js"
+            "destination": "/backend/server.js"
         },
         {
             "source": "/l/(.*)",
-            "destination": "backend/server.js"
+            "destination": "/backend/server.js"
         },
         {
             "source": "/uploads/(.*)",
-            "destination": "backend/uploads/$1"
+            "destination": "/backend/uploads/$1"
         },
         {
             "source": "/assets/(.*)",
-            "destination": "frontend/dist/assets/$1"
+            "destination": "/frontend/dist/assets/$1"
         },
         {
             "source": "/(.*)",
-            "destination": "frontend/dist/index.html"
+            "destination": "/frontend/dist/index.html"
         }
     ]
 }
