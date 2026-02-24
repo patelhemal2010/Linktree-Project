@@ -304,12 +304,13 @@ export default function LivePreview({ settings, profile }) {
                 {/* Header Section */}
                 {isHero ? (
                     <div className="w-full flex flex-col items-center mb-10">
-                        {/* Partitioned White Header Area - Increased Size */}
-                        <div className="w-full h-72 bg-white relative overflow-hidden shadow-sm flex items-center justify-center">
+                        {/* Partitioned White Header Area - Responsive Size */}
+                        <div className="w-full h-48 md:h-72 bg-white relative overflow-hidden shadow-sm flex items-center justify-center transition-all duration-500">
+                            <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white pointer-events-none" />
                             {(logoImage || profile.profile_image) ? (
                                 <img
                                     src={logoImage || profile.profile_image}
-                                    className="max-h-56 w-auto object-contain p-4 relative z-10"
+                                    className="max-h-36 md:max-h-56 w-auto object-contain p-6 relative z-10 drop-shadow-sm"
                                     alt="Brand Logo"
                                 />
                             ) : (
@@ -318,18 +319,18 @@ export default function LivePreview({ settings, profile }) {
                                 </div>
                             )}
                         </div>
-                        <div className="w-full text-center px-4 flex flex-col items-center mt-8">
+                        <div className="w-full text-center px-6 flex flex-col items-center mt-6 md:mt-8">
                             {titleStyle === 'logo' && logoImage ? (
-                                <img src={logoImage} alt="Logo" className={`${size === 'large' ? 'max-h-28' : 'max-h-20'} w-auto object-contain mb-3`} />
+                                <img src={logoImage} alt="Logo" className={`${size === 'large' ? 'max-h-24 md:max-h-28' : 'max-h-16 md:max-h-20'} w-auto object-contain mb-4`} />
                             ) : (
                                 title && (
-                                    <h1 className={`${size === 'large' ? 'text-3xl font-black' : 'text-2xl font-black'} mb-2 tracking-tight transition-all duration-300`} style={{ color: (wallpaperStyle === 'obsidian-gold' || wallpaperStyle === 'jewelry-lux') ? '#FFFFFF' : (titleColor || '#1a1a1a') }}>
+                                    <h1 className={`${size === 'large' ? 'text-2xl md:text-3xl font-black' : 'text-xl md:text-2xl font-black'} mb-2 tracking-tight transition-all duration-300`} style={{ color: (wallpaperStyle === 'obsidian-gold' || wallpaperStyle === 'jewelry-lux') ? '#FFFFFF' : (titleColor || '#1a1a1a') }}>
                                         {title}
                                     </h1>
                                 )
                             )}
-                            {settings.tagline && <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#D4AF37] mb-2">{settings.tagline}</p>}
-                            {bio && <p className="text-sm font-medium max-w-xs mx-auto leading-relaxed opacity-60" style={{ color: (wallpaperStyle === 'obsidian-gold' || wallpaperStyle === 'jewelry-lux') ? '#FFFFFF' : pageTextColor }}>{bio}</p>}
+                            {settings.tagline && <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.35em] text-[#D4AF37] mb-3">{settings.tagline}</p>}
+                            {bio && <p className="text-xs md:text-sm font-medium max-w-[280px] md:max-w-xs mx-auto leading-relaxed opacity-60" style={{ color: (wallpaperStyle === 'obsidian-gold' || wallpaperStyle === 'jewelry-lux') ? '#FFFFFF' : pageTextColor }}>{bio}</p>}
                         </div>
                     </div>
                 ) : (
@@ -366,8 +367,8 @@ export default function LivePreview({ settings, profile }) {
 
                 {/* Gold Widget */}
                 {goldWidget?.enabled && (
-                    <div className="w-full max-w-[380px] mb-12 px-2">
-                        <div className="bg-white/70 backdrop-blur-2xl border border-[#D4AF37]/30 rounded-[32px] p-8 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden group hover:border-[#D4AF37]/50 transition-all duration-500">
+                    <div className="w-full max-w-[400px] mb-12 px-4 md:px-2">
+                        <div className="bg-white/70 backdrop-blur-2xl border border-[#D4AF37]/30 rounded-[2.5rem] md:rounded-[32px] p-6 md:p-8 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden group hover:border-[#D4AF37]/50 transition-all duration-500">
                             {/* Static Shine */}
                             <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4AF37]/5 blur-[60px] rounded-full -mr-24 -mt-24 pointer-events-none" />
 
@@ -440,8 +441,8 @@ export default function LivePreview({ settings, profile }) {
 
                 {/* Simplified Map Widget */}
                 {mapWidget?.enabled && (
-                    <div className="w-full max-w-[400px] mb-12 px-2 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <div className="bg-white/70 backdrop-blur-2xl border border-[#D4AF37]/30 rounded-[32px] p-8 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden group hover:border-[#D4AF37]/50 transition-all duration-500">
+                    <div className="w-full max-w-[400px] mb-12 px-4 md:px-2 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                        <div className="bg-white/70 backdrop-blur-2xl border border-[#D4AF37]/30 rounded-[2.5rem] md:rounded-[32px] p-6 md:p-8 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden group hover:border-[#D4AF37]/50 transition-all duration-500">
                             {/* Static Shine */}
                             <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4AF37]/5 blur-[60px] rounded-full -mr-24 -mt-24 pointer-events-none" />
 

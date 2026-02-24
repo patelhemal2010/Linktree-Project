@@ -83,9 +83,9 @@ export default function PublicProfile() {
     }
 
     return (
-        <div style={pageStyle} className="public-profile-shell">
-            <div className="w-full max-w-[580px] h-auto md:rounded-[3.5rem] bg-white shadow-[0_30px_100px_rgba(0,0,0,0.5)] relative overflow-hidden">
-                <div className="w-full h-full md:rounded-[3.5rem] overflow-hidden">
+        <div style={pageStyle} className="public-profile-shell px-4 py-8 md:px-6 md:py-16">
+            <div className="w-full max-w-[580px] h-auto rounded-[3rem] bg-white shadow-[0_30px_100px_rgba(0,0,0,0.5)] relative overflow-hidden transition-all duration-500">
+                <div className="w-full h-full rounded-[3rem] overflow-hidden">
                     <LivePreview settings={settings} profile={trackedProfile} />
                 </div>
             </div>
