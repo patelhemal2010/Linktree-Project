@@ -195,9 +195,9 @@ export default function LinkManager({ onUpdate, profileId }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Check for protocol
-            let url = formData.url;
-            if (!/^https?:\/\//i.test(url)) {
+            // Check for protocol if URL is provided
+            let url = formData.url.trim();
+            if (url && !/^https?:\/\//i.test(url)) {
                 url = 'https://' + url;
             }
 
@@ -329,7 +329,6 @@ export default function LinkManager({ onUpdate, profileId }) {
                                     className="w-full px-4 py-2 border border-gray-200 bg-gray-50 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all"
                                     value={formData.title}
                                     onChange={e => setFormData({ ...formData, title: e.target.value })}
-                                    required
                                     placeholder="e.g. My Instagram"
                                 />
                             </div>
@@ -340,7 +339,6 @@ export default function LinkManager({ onUpdate, profileId }) {
                                     className="w-full px-4 py-2 border border-gray-200 bg-gray-50 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all"
                                     value={formData.url}
                                     onChange={e => setFormData({ ...formData, url: e.target.value })}
-                                    required
                                     placeholder="instagram.com/user"
                                 />
                             </div>

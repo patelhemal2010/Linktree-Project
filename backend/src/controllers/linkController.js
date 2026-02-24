@@ -26,10 +26,10 @@ exports.addLink = async (req, res) => {
   const { title, url, profile_id } = req.body;
   const userId = req.user.id;
 
-  if (!title || !url || !profile_id) {
+  if (!profile_id) {
     return res.status(400).json({
       success: false,
-      message: "Title, URL, and Profile ID are required",
+      message: "Profile ID is required",
     });
   }
 
@@ -46,7 +46,7 @@ exports.addLink = async (req, res) => {
       `INSERT INTO links (user_id, profile_id, title, url, position, platform)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-      [userId, profile_id, title.trim(), url.trim(), nextPosition, req.body.platform || 'website']
+      [userId, profile_id, (title || '').trim(), (url || '').trim(), nextPosition, req.body.platform || 'website']
     );
 
     res.status(201).json({
@@ -105,7 +105,14 @@ exports.updateLink = async (req, res) => {
            platform = COALESCE($4, platform)
        WHERE id = $5 AND user_id = $6
        RETURNING *`,
-      [title || null, url || null, is_active, req.body.platform || null, id, userId]
+      [
+        (title === undefined ? null : title),
+        (url === undefined ? null : url),
+        (is_active === undefined ? null : is_active),
+        (req.body.platform === undefined ? null : req.body.platform),
+        id,
+        userId
+      ]
     );
 
     if (result.rows.length === 0) {
