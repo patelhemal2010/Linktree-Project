@@ -1,11 +1,5 @@
 {
     "version": 2,
-    "functions": {
-        "backend/server.js": {
-            "runtime": "@vercel/node@18.x",
-            "includeFiles": "backend/src/**"
-        }
-    },
     "rewrites": [
         {
             "source": "/api/(.*)",
