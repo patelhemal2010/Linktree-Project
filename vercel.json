@@ -20,11 +20,11 @@
         },
         {
             "source": "/assets/(.*)",
-            "destination": "/dist/assets/$1"
+            "destination": "/frontend/dist/assets/$1"
         },
         {
             "source": "/(.*)",
-            "destination": "/dist/index.html"
+            "destination": "/frontend/dist/index.html"
         }
     ]
 }
