@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/admin/Sidebar';
 import TopBar from '../components/admin/TopBar';
-import { Share2, Edit2, LayoutGrid, Maximize2, BarChart2, Plus, Trash2 } from 'lucide-react';
+import { Share2, Edit2, LayoutGrid, Maximize2, BarChart2, Plus, Trash2, Search } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import api from '../api/client';
